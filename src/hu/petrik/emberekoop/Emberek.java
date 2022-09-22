@@ -18,8 +18,18 @@ public class Emberek {
     }
 
     public  Emberek(String fajlNev) throws IOException {
+        emberek = new ArrayList<>();
         FileReader fr = new FileReader(fajlNev);
         BufferedReader br = new BufferedReader(fr);
+        String sor = br.readLine();
+        while (sor != null && !sor.equals("")){
+            String[] adatok  = sor.split(";");
+            Ember ember = new Ember(adatok[0], adatok[1], adatok[2]);
+            this.emberek.add(ember);
+
+            sor = br.readLine();
+        }
+
 
         br.close();
         fr.close();
